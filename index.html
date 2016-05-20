@@ -1,258 +1,47 @@
-<!DOCTYPE html>
-<html lang="zh-CN" device="pc">
+<html>
+
 <head>
+    <base href="/">
     <meta charset="UTF-8">
-    <title>Affilicate-Index</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery.min.js"></script>
-<!--     
-    <link rel="stylesheet" href="css/jquery.selectbox.css">
-    <script src="js/jquery.selectbox-0.2.min.js"></script>
- -->    
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" max-age="0" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="edge">
+    <title>Angular 2 QuickStart</title>
+
+    <!-- 1. Load libraries -->
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/es6-shim/es6-shim.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+
+
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/boot')
+                .then(null, console.error.bind(console));
+    </script>
     <link rel="stylesheet" href="css/werewolves.css">
-
 </head>
-<body class="index">
-    <div id="setting" >
-        <div class="logo">
-        </div>
-        <div class="setup">
-            <table width="100%" height="80%" border="0" style="table-layout: fixed;">
-                <tr>
-                    <td>
-                        <p class="title">
-                            总人数
-                        </p>
-                        <select id="count" class="form-control">
-                            <option value=5>5</option>
-                            <option value=6>6</option>
-                            <option value=7>7</option>
-                            <option value=8>8</option>
-                            <option value=9>9</option>
-                            <option value=10>10</option>
-                            <option value=11>11</option>
-                            <option value=12>12</option>
-                            <option value=13>13</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                     <td>
-                        <p class="title">
-                            狼人数
-                        </p>
-                        <select id="wolvescount" class="form-control">
-                            <option value=1>1</option>
-                            <option value=2>2</option>
-                            <option value=3>3</option>
-                            <option value=4>4</option>
-                            <option value=5>5</option>
-                            <option value=6>6</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                     <td>
-                        <p class="title">
-                            普通村民
-                        </p>
-                        <select id="farmercount" class="form-control">
-                            <option value=1>1</option>
-                            <option value=2>2</option>
-                            <option value=3>3</option>
-                            <option value=4>4</option>
-                            <option value=5>5</option>
-                            <option value=6>6</option>
-                            <option value=7>7</option>
-                            <option value=8>8</option>
-                            <option value=9>9</option>
-                            <option value=10>10</option>
-                            <option value=11>11</option>
-                            <option value=12>12</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="title">
-                            预言家
-                        </p>
-                        <input id="yyj" type="checkbox">
-                
-                        <p class="title">
-                            丘比特
-                        </p>
-                        <input id="qbt" type="checkbox">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="title">
-                            女巫
-                        </p>
-                        <input id="nw" type="checkbox">
-                
-                        <p class="title">
-                            守卫
-                        </p>
-                        <input id="sw" type="checkbox">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="title">
-                            白痴
-                        </p>
-                        <input id="bc" type="checkbox">
-                
-                        <p class="title">
-                            猎人
-                        </p>
-                        <input id="lr" type="checkbox">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button id="begin" type="submit" class="btn btn-danger">开始</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div> 
-    <div id="show" style="display:none">
-        <div id="player" class="player">
-            Player 1
-        </div>
-        <div id="cover" class="cover">
-            <div id="clickhere" >
-                <button id="click" type="submit" class="btn btn-danger">Click Here</button>
-            </div>
-            <div id="identity" style="display:none">
-                <img id="photo" src= "image/狼人.jpg " width= "200 " height= "200 ">
-                <p id="name">狼人</p>
-            </div>
-            
 
-        </div>
-         <button id="next" type="submit" class="btn btn-danger">next</button>
-    </div>
-  
-<script>
-    var temp=0;
-    var character= new Array()
-
-    function randomSort(a,b){ //数组元素随机排列 
-        return Math.random()>.5 ? -1:1; 
-    } 
-
-    zoomtemp = $("body").width()/360;
-    $("#setting").css("zoom",zoomtemp);
-    $("#farmercount").val($("#count").val()-$("#wolvescount").val());
-    
-    $("#yyj").prop("checked",false);
-    $("#qbt").prop("checked",false);
-    $("#nw").prop("checked",false);
-    $("#sw").prop("checked",false);
-    $("#bc").prop("checked",false);
-    $("#lr").prop("checked",false);
-    $("#count").change(function(){
-        // $("#farmercount").val($("#count").val()-$("#wolvescount").val());
-        tempint = $("#count").val()-$("#wolvescount").val();
-        $("#farmercount").val(tempint);
-    });
-    $("#wolvescount").change(function(){
-        $("#farmercount").val($("#count").val()-$("#wolvescount").val());
-    });
-    $("#begin").click(function(){
-        console.log("总人数是："+$("#count").val());
-        console.log("狼人数是："+$("#wolvescount").val());
-        console.log("普通村民数是："+$("#farmercount").val());
-
-       
-        if($("#yyj").attr("checked")=="checked"){
-            console.log("预言家被选中了");
-        }
-        if($("#qbt").attr("checked")=="checked"){
-            console.log("丘比特被选中了");
-        }
-        if($("#nw").attr("checked")=="checked"){
-            console.log("女巫被选中了");
-        }
-        if($("#sw").attr("checked")=="checked"){
-            console.log("守卫被选中了");
-        }
-        if($("#bc").attr("checked")=="checked"){
-            console.log("白痴被选中了");
-        }
-        if($("#lr").attr("checked")=="checked"){
-            console.log("猎人被选中了");
-        }
-
-        for(var i=0;i<$("#wolvescount").val();i++){
-            character.push("狼人");
-        }
-        for(var i=0;i<$("#farmercount").val();i++){
-            character.push("普通村民");
-        }
-        if($("#yyj").attr("checked")=="checked"){
-            character.push("预言家");
-        }
-        if($("#qbt").attr("checked")=="checked"){
-            character.push("丘比特");
-        }
-        if($("#nw").attr("checked")=="checked"){
-            character.push("女巫");
-        }
-        if($("#sw").attr("checked")=="checked"){
-            character.push("守卫");
-        }
-        if($("#bc").attr("checked")=="checked"){
-            character.push("白痴");
-        }
-        if($("#lr").attr("checked")=="checked"){
-            character.push("猎人");
-        }
-        console.log(character);
-
-        character.sort(randomSort); 
-  
-        console.log(character);
-
-        $("#setting").hide();
-        $("#show").show();
-
-
-           // <img id="photo" src= "image/狼人.jpg " width= "200 " 
-        $("#player").html("Player "+(temp+1));
-        $("#photo").attr("src","image/"+character[temp]+".jpg");
-        $("#name").html(character[temp]);
-        temp++;
-        console.log("image/"+character[temp]+".jpg");        
-
-    });
-
-    $("#click").click(function(){
-        $("#clickhere").hide();
-        $("#identity").show();
-    });
-    $("#next").click(function(){
-        if (temp==character.length){
-            $("#show").hide();
-        }
-        if($("#identity").css("display")=="none"){
-            alert("你还没看牌呢吧...");
-        }else{
-            $("#clickhere").show();
-            $("#identity").hide();
-            $("#player").html("Player "+(temp+1));
-            $("#photo").attr("src","image/"+character[temp]+".jpg");
-            $("#name").html(character[temp]);
-            temp++;
-        }
-    });
-
-
-</script>
-
+<!-- 3. Display the application -->
+<body>
+<my-app>Loading...</my-app>
 </body>
+
 </html>

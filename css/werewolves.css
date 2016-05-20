@@ -1,3 +1,7 @@
+@import 'bootstrap.min.css';
+@import 'iconfont.css';
+
+
 /* css reset www.admin10000.com */
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,blockquote,th,td { margin:0; padding:0; }
 body { background:#fff; color:#555; font-size:14px; font-family: Verdana, Arial, Helvetica, sans-serif; }
@@ -14,83 +18,175 @@ html {overflow-y: scroll;}
 .clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
 .clearfix { *zoom:1; }
 
-.index{
-	background-color:black;
-	position:absolute;
-	width:100%;
-	height:100%;
+/*启动页*/
+.index-body{
+    background-color:black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
-.logo{
-	background: url(../image/logo.jpg) no-repeat;
-	margin:10% auto;
-	width:200px;
-	height:200px;
+.index-logo-img{
+    width: 80%;
+    margin: 20% 0 20% 10%;
 }
-.form-control {
-	display:inline-block;
-    width: 30%;
-    height: 30px;
-    padding: 4px 12px;
-    font-size: 14px;
-    line-height: 1.42857;
-    color: red;
-    background-color: black;
-    background-image: none;
-    border: 1px solid #CCC;
-    border-radius: 4px;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
-    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+.index-logo-div{
+    margin: 0 auto;
 }
-td{
-	text-align:center;
-	padding-bottom:15px;
+.btn-index{
+    width: 200px;
+    display: block;
+    height: 60px;
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: darkred;
+    border-color: gray;
+    box-shadow: 0 1px 1px rgba(90,90,90,0.1);
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    margin: 0 auto;
 }
-.title{
-	display:inline-block;
-	color:red;
-	width:20%;
-	font-family: 'Microsoft YaHei';
-	font-size: 15px;
-	font-weight: 700;
-	line-height: 20px;
+.btn-index-about{
+    margin-top:30px;
 }
-.player{
-	text-align: center;
-	margin: 22%;
-	font-family: "Microsoft YaHei";
-	font-size: 30px;
-	font-weight: 700;
-	line-height: 20px;
-	color: gold;
-}
-.cover{
-	width:300px;
-	height:300px;
-	margin:0 auto;
-	color:red;
-}
-#show{
-	text-align:center;
-}
-#next{
-	width:150px;
-	margin-top:5%;
-}
-#clickhere{
-	vertical-align:middle;
-	padding-top:45%;
-}
-#identity{
-	width:100%;
-	height:100%;
 
+/*关于作者页面*/
+.about-title{
+    text-align:center;
+    width: 100%;
+    font-size: 40px;
+    padding: 20% 0 10%;
 }
-#name{
-	text-align: center;
-	padding-top:10%;
-	font-family: "Microsoft YaHei";
-	font-size: 30px;
-	font-weight: 700;
-	line-height: 20px;
-	color: gold;
+.about-logo{
+    width:100%;
+}
+.about-name{
+    text-align:center;
+    width:100%;
+    font-size: 30px;
+    padding: 10% 0;
+}
+.about-close{
+    width: 65px;
+    height: 65px;
+    border: 1px lightgray solid;
+    font-size: 53px;
+    line-height: 50px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: center;
+    z-index: 10;
+}
+.config-title{
+    color: darkred;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    padding: 40px;
+}
+.config-label{
+    text-align: right;
+    line-height: 35px;
+    font-size: 22px;
+    padding-right: 0;
+}
+.config-advise{
+    font-size: 15px;
+}
+.config-form-group{
+    margin:40px;
+}
+
+.form-horizontal input{
+    text-align: center;
+}
+.form-horizontal .form-group{
+    margin: 40px 0;
+}
+
+/*checkbox样式*/
+.mui-checkbox {
+    -webkit-appearance: none;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    background-color: #FFFFFF;
+    border: solid 1px #d9d9d9;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-clip: padding-box;
+    display: inline-block; }
+.mui-checkbox:focus {
+    outline: 0 none;
+    outline-offset: -2px; }
+.mui-checkbox:checked {
+    background-color: #18b4ed;
+    border: solid 1px #FFFFFF; }
+.mui-checkbox:checked:before {
+    display: inline-block;
+    margin-top: 1px;
+    margin-left: 2px;
+    font-family: iconfont;
+    content: "\e667";
+    color: #FFFFFF;
+    font-size: 18px; }
+.mui-checkbox:disabled {
+    background-color: #d9d9d9;
+    border: solid 1px #d9d9d9; }
+.mui-checkbox:disabled:before {
+    display: inline-block;
+    margin-top: 1px;
+    margin-left: 2px;
+    font-family: iconfont;
+    content: "\e667";
+    color: #FFFFFF;
+    font-size: 18px; }
+.mui-checkbox.checkbox-green:checked {
+    background-color: #5cb85c; }
+.mui-checkbox.checkbox-orange:checked {
+    background-color: #f0ad4e; }
+.mui-checkbox.checkbox-s {
+    width: 19px;
+    height: 19px; }
+.mui-checkbox.checkbox-s:before {
+    display: inline-block;
+    margin-top: 1px;
+    margin-left: 2px;
+    font-family: iconfont;
+    content: "\e667";
+    color: #FFFFFF;
+    font-size: 13px; }
+
+.mui-checkbox-anim {
+    -webkit-transition: background-color ease 0.2s;
+    transition: background-color ease 0.2s; }
+
+.roles-area{
+    width: 90%;
+    margin-left: 10%;
+}
+.role-item{
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.btn-index-begin{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    margin-left: -100px;
+}
+
+
+.info-area{
+    width: 90%;
+    margin: 10% auto;
 }
