@@ -4,11 +4,14 @@ import {DataService} from './role.service'
 
 
 @Component({
+    selector: 'role-detail',
     template: `
     <div class="index-body">
+        {{role.url}}
+        {{role.name}}
         <div class="info-area">
             <div *ngIf="role.next">
-                <img [src]="role.url" [alt]="role.name"/>
+                <img [src]="role.url" [alt]="role.name" *ngIf="role.url"/>
                 <span>{{role.name}}</span>
             </div>
             <div *ngIf="!role.next">
@@ -20,6 +23,7 @@ import {DataService} from './role.service'
     </div>
     `,
     directives: [ROUTER_DIRECTIVES],
+    inputs: ['role','roles']
 })
 export class GameComponent implements OnInit{
 
@@ -33,10 +37,11 @@ export class GameComponent implements OnInit{
 
     nextRole() {
         if(this.index<this.roles.length){
+            this.role.url = '';
             this.role = this.roles[this.index];
             this.index++;
         }else{
-            this._router.navigate(['AboutAuthor']);
+            this._router.navigate(['ListPage']);
         }
     }
 

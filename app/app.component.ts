@@ -3,10 +3,12 @@
  */
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {AppIndexComponent} from './app.index'
-import {AboutComponent} from './app.about'
-import {ConfigComponent} from './app.config'
-import {GameComponent} from './app.game'
+import {AppIndexComponent} from './app.index';
+import {AboutComponent} from './app.about';
+import {ConfigComponent} from './app.config';
+import {GameComponent} from './app.game';
+import {ListComponent} from './app.list';
+
 
 
 interface Role {
@@ -48,6 +50,11 @@ interface Role {
         path: 'game',
         name: 'GameIndex',
         component: GameComponent
+    },
+    {
+        path: 'list',
+        name: 'ListPage',
+        component: ListComponent
     }
 ])
 export class AppComponent {}

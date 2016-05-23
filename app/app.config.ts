@@ -50,9 +50,9 @@ import {DataService} from './role.service'
 })
 export class ConfigComponent implements OnInit{
 
-    public totalNum = 8;
-    public villagerNum = 2;
-    public werewolfNum = 2;
+    public totalNum = 3;
+    public villagerNum = 1;
+    public werewolfNum = 1;
     public roleArray = [
         {
             'name': '预言家',
@@ -108,6 +108,7 @@ export class ConfigComponent implements OnInit{
     beginGame() {
         for(var i=0,len = this.roleArray.length;i<len;i++){
             if(this.roleArray[i].selected){
+                this.roleArray[i].index = i+1;
                 this.items.push(this.roleArray[i]);
             }
         }
@@ -117,7 +118,8 @@ export class ConfigComponent implements OnInit{
                     {
                         'name': '村民',
                         'code': 'villager',
-                        'selected': false
+                        'selected': false,
+                        'index': this.items.length+1
                     }
                 );
             }
@@ -128,7 +130,8 @@ export class ConfigComponent implements OnInit{
                     {
                         'name': '狼人',
                         'code': 'werewolf',
-                        'selected': false
+                        'selected': false,
+                        'index': this.items.length+1
                     }
                 );
             }

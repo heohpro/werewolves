@@ -20,7 +20,7 @@ export class AppIndexComponent implements OnInit{
     ){}
 
     ngOnInit() {
-        console.log("Index is ready!");
+        console.log("List is ready!");
     }
 
     gotoAbout() {
