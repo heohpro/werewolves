@@ -1,3 +1,3 @@
 # werewolves
 
-# an werewolf game webapp create by ng2
+# A werewolf game webapp create by ng2.
