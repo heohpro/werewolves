@@ -15,11 +15,12 @@ import {GameComponent} from './app.game'
                     <span class="span-item">{{role.index}}号玩家</span>
                 </div>
             </div>
+            <button class="btn-index btn-index-begin" (click)="restart()">重新开始</button>
         </div>
         <div class="info-area" *ngIf="isShow">
             <div>
-                <img [src]="role.url" [alt]="role.name"/>
-                <span>{{role.name}}</span>
+                <img [src]="role.url" [alt]="role.name" width="100%"/>
+                <div class="info-span">{{role.name}}</div>
             </div>
             <button class="btn-index btn-index-begin" (click)="isShow = !isShow">记住了</button>
         </div>
@@ -39,31 +40,21 @@ export class ListComponent implements OnInit{
         private _dataService: DataService
     ){}
 
-    nextRole() {
-        if(this.index<this.roles.length){
-            this.role = this.roles[this.index];
-            this.index++;
-        }else{
-            this._router.navigate(['AboutAuthor']);
-        }
+    restart() {
+        this._router.navigate(['Index']);
     }
 
     previewRole(role) {
-        console.log("previewRole!!!")
         this.role = role;
         this.isShow = true;
     }
 
     ngOnInit() {
-        console.log("Game is ready!");
+        console.log("List is ready!");
         this.roleList = this._dataService.getData();
-        //if(this.roles.length==0){
-        //    this.roles.push({'name':"村民",'code':'villager'});
-        //}
         for(var item of this.roleList){
             item.url = '/image/'+item.code+'.jpg';
             item.next = false;
         }
-        //this.role = this.roles[0];
     }
 }

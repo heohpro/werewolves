@@ -7,15 +7,13 @@ import {DataService} from './role.service'
     selector: 'role-detail',
     template: `
     <div class="index-body">
-        {{role.url}}
-        {{role.name}}
         <div class="info-area">
             <div *ngIf="role.next">
-                <img [src]="role.url" [alt]="role.name" *ngIf="role.url"/>
-                <span>{{role.name}}</span>
+                <img [src]="role.url" [alt]="role.name" *ngIf="role.url" width="100%"/>
+                <div class="info-span">{{role.name}}</div>
             </div>
             <div *ngIf="!role.next">
-                <span></span>
+                <div class="info-span">请第{{index}}位玩家查看身份</div>
             </div>
         </div>
         <button class="btn-index btn-index-begin" (click)="role.next = true" *ngIf="!role.next">查看</button>

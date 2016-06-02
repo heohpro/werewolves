@@ -85,6 +85,7 @@ export class ConfigComponent implements OnInit{
         }
     ]
     public items  = new Array();
+    public result = new Array();
 
     constructor(
         private _router: Router,
@@ -108,34 +109,38 @@ export class ConfigComponent implements OnInit{
     beginGame() {
         for(var i=0,len = this.roleArray.length;i<len;i++){
             if(this.roleArray[i].selected){
-                this.roleArray[i].index = i+1;
                 this.items.push(this.roleArray[i]);
             }
         }
         for(var i=0,len = this.villagerNum;i<len;i++){
-            if(this.roleArray[i].selected){
-                this.items.push(
-                    {
-                        'name': '村民',
-                        'code': 'villager',
-                        'selected': false,
-                        'index': this.items.length+1
-                    }
-                );
-            }
+            this.items.push(
+                {
+                    'name': '村民',
+                    'code': 'villager',
+                    'selected': false,
+                }
+            );
         }
         for(var i=0,len = this.werewolfNum;i<len;i++){
-            if(this.roleArray[i].selected){
-                this.items.push(
-                    {
-                        'name': '狼人',
-                        'code': 'werewolf',
-                        'selected': false,
-                        'index': this.items.length+1
-                    }
-                );
-            }
+            this.items.push(
+                {
+                    'name': '狼人',
+                    'code': 'werewolf',
+                    'selected': false,
+                }
+            );
         }
+
+        //数组随机排序
+        for(var i=0,len = this.items.length;i<len;i++){
+            var rand = parseInt(Math.random()*len);
+            var temp = this.items[rand];
+            this.items[rand] = this.items[i];
+            this.items[i] = temp;
+        }
+        this.items.forEach(function(item,index){
+            item.index = index+1;
+        });
 
         this._dataService.setData(this.items);
         console.log(this._dataService.getData());
